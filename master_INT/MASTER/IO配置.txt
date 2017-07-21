@@ -1,0 +1,10 @@
+一组：四路增益控制 ABCD
+      VCC GND 
+      接收使能INH
+      接收信号（接收到输出方波）
+
+IO配置 接收信号: PE2 PE3 PE4 PE5（外部中断，下降沿触发）
+       INH: PD4 PD5 PD6 PD7
+       ABCD: PG0~PG15
+
+三路定时器 TIM1 TIM2 TIM3

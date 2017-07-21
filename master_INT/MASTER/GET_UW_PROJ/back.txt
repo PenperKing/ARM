@@ -1,0 +1,61 @@
+
+
+//外部中断2服务程序
+void EXTI2_IRQHandler(void)
+{
+	if(EXTI_GetITStatus(EXTI_Line2) != RESET&&Get_UW_flag[0])
+  {
+	  EXTI_ClearITPendingBit(EXTI_Line2);//清除LINE2上的中断标志位 
+			 time[0]=TIM_GetCounter(TIM1)+ms_count[0]*65536;
+				Get_UW_flag[0]=0;
+				state|=0x01;
+				Seq[0]=state;
+				define_state(state);
+	//			time[0]=TIM_GetCounter(TIM1)+ms_count[0]*65536;
+	//			Get_UW_flag[0]=0;
+	//			time[0]=time[0]/1000-15;
+	//     Dis_test=time[0]*Voice_SPEED/10+10;
+	//			
+	//			printf("%f,",Dis_test);
+	}
+} 
+//外部中断3服务程序
+void EXTI3_IRQHandler(void)
+{
+	if(EXTI_GetITStatus(EXTI_Line3) != RESET&&Get_UW_flag[1])
+  {
+		EXTI_ClearITPendingBit(EXTI_Line3);  //清除LINE3上的中断标志位  
+			 time[1]=TIM_GetCounter(TIM1)+ms_count[0]*65536;
+				Get_UW_flag[1]=0;
+				state|=0x02;
+				Seq[1]=state;
+				define_state(state);
+	}
+}
+//外部中断4服务程序
+void EXTI4_IRQHandler(void)
+{
+	if(EXTI_GetITStatus(EXTI_Line4) != RESET&&Get_UW_flag[2])
+  {
+		 EXTI_ClearITPendingBit(EXTI_Line4);//清除LINE4上的中断标志位
+		 time[2]=TIM_GetCounter(TIM1)+ms_count[0]*65536;
+			Get_UW_flag[2]=0;
+			state|=0x04;
+			Seq[2]=state;
+			define_state(state);
+	}		
+}
+
+//外部中断1服务程序
+void EXTI9_5_IRQHandler(void)
+{
+	if(EXTI_GetITStatus(EXTI_Line5) != RESET&&Get_UW_flag[3])
+  {
+		EXTI_ClearITPendingBit(EXTI_Line5);//清除LINE2上的中断标志位 
+		 time[3]=TIM_GetCounter(TIM1)+ms_count[0]*65536;
+			Get_UW_flag[3]=0;
+			state|=0x08;
+			Seq[3]=state;
+		  define_state(state);
+	}
+}
